@@ -14,6 +14,7 @@ namespace chatshit
             InitializeComponent();
 
             MainPage = new chatshit.MainPage();
+            MainPage = new NavigationPage(new chatshit.MainPage());
         }
 
         protected override void OnStart()
