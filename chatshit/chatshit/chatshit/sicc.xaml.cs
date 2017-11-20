@@ -16,9 +16,9 @@ namespace chatshit
 		public Page1 (string ged)
 		{
             name = ged;
-			InitializeComponent ();
-            
-		}
+            InitializeComponent();
+
+        }
 
 	}
 }
