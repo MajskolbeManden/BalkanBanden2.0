@@ -22,7 +22,7 @@ namespace chatshit
                 await DisplayAlert("chat", "giv mig dit navn", "Ok!");
                 return;
             }
-            await Navigation.PushAsync(new Page1(Username.Text));
+            await Navigation.PushAsync(new chatpage(Username.Text));
         }
     }
 }

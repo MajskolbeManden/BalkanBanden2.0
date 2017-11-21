@@ -11,12 +11,15 @@ namespace chatshit
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class chatpage : ContentPage
 	{
-		public chatpage ()
+		public chatpage (string ged)
 		{
+            
+        
 			InitializeComponent ();
-
+            string name;
+            name = ged;
             var hubConnection = new HubConnection("http://sameh.webdesk-dev.dk");
-            var chat = hubConnection.CreateHubProxy("chat");
+            var chat = hubConnection.CreateHubProxy("ChatHub");
 
             chat.On<string>("newMessage", msg =>
             {
