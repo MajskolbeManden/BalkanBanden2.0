@@ -1,4 +1,5 @@
-﻿using System;
+﻿using chatshit.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,16 @@ namespace chatshit
 {
     public partial class App : Application
     {
+        private static MainViewModel viewModel = null;
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                if (ViewModel == null)
+                    viewModel = new MainViewModel();
+                return viewModel;
+            }
+        }
         public App()
         {
             InitializeComponent();
