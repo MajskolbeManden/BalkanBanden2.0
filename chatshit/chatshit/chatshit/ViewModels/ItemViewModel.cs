@@ -1,9 +1,14 @@
 ﻿using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace chatshit.ViewModels
 {
-    public class ItemViewModel
+    public class ItemViewModel: INotifyPropertyChanged
     {
+        private string pickMe;
+        public ItemViewModel()
+        {
+        }
         private string id;
         public string ID
         {
@@ -13,11 +18,19 @@ namespace chatshit.ViewModels
                 if (value != id)
                 {
                     id = value;
-                    NotifyPropertyChanged("ID");
+                   // NotifyPropertyChanged("ID");
                 }
             }
         }
-
+        public string PickMe
+        {
+            get { return pickMe; }
+            set
+            {
+                pickMe = value;
+                OnPropertyChanged(nameof(PickMe));
+            }
+        }
         private string lineOne;
         public string LineOne
         {
@@ -28,7 +41,7 @@ namespace chatshit.ViewModels
                 if (value  != lineOne)
                 {
                     lineOne = value;
-                    NotifyPropertyChanged("LineOne");
+                    OnPropertyChanged(nameof(LineOne));
                 }
             }
         }
@@ -43,20 +56,32 @@ namespace chatshit.ViewModels
                 if (value != lineTwo)
                 {
                     lineOne = value;
-                    NotifyPropertyChanged("LineTwo");
+                   OnPropertyChanged(nameof(LineTwo));
                 }
             }
         }
 
+        //public event PropertyChangedEventHandler PropertyChanged;
+        //private void NotifyPropertyChanged(string propertyName)
+        //{
+        //    PropertyChangedEventHandler handler = PropertyChanged;
+        //    if (null != handler)
+        //    {
+        //        handler(this, new PropertyChangedEventArgs(propertyName));
+        //    }
+        //}
+        #region Property of datatype PropertyChangedEventHandler
         public event PropertyChangedEventHandler PropertyChanged;
-        private void NotifyPropertyChanged(string propertyName)
+        #endregion
+
+        #region Method to handle updating the view
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            PropertyChangedEventHandler handler = PropertyChanged;
-            if (null != handler)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #endregion
 
     }
 }

@@ -12,13 +12,13 @@ namespace chatshit
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class Page1 : ContentPage
 	{
-        private string name;
-		public Page1 (string ged)
-		{
-            name = ged;
-            InitializeComponent();
+  //      private string name;
+		//public Page1 (string ged)
+		//{
+  //          name = ged;
+  //          InitializeComponent();
 
-        }
+  //      }
 
 	}
 }

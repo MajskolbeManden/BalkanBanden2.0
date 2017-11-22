@@ -10,20 +10,25 @@ namespace chatshit
 {
     public partial class App : Application
     {
-        private static MainViewModel viewModel = null;
+        //private static MainViewModel viewModel = null;
+        //public static MainViewModel ViewModel
+        //{
+        //    get
+        //    {
+        //        if (ViewModel == null)
+        //            viewModel = new MainViewModel();
+        //        return viewModel;
+        //    }
+        //}
+        private static readonly MainViewModel viewModel = new MainViewModel();
         public static MainViewModel ViewModel
         {
-            get
-            {
-                if (ViewModel == null)
-                    viewModel = new MainViewModel();
-                return viewModel;
-            }
+            get { return viewModel; }
         }
         public App()
         {
             InitializeComponent();
-
+            MainViewModel mvm = new MainViewModel();
             MainPage = new chatshit.MainPage();
             MainPage = new NavigationPage(new chatshit.MainPage());
         }
