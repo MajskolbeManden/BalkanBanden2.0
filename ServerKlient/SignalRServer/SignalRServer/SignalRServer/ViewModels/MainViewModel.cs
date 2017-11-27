@@ -34,8 +34,7 @@ namespace SignalRServer.ViewModels
         {
 
             Cm = new ChatMessage();
-            ChatList = new ObservableCollection<ChatMessage>();
-            ChatList.Add(new ChatMessage { LineOne = "abc" });
+            ChatList = new ObservableCollection<ChatMessage>();            
             chatservice.Connect();
             chatservice.OnMessageReceived += chatservice_OnMessageReceived;
             SendMessageCommand = new RelayCommand(ExecuteSendMessageCommand);

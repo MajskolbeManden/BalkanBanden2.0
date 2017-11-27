@@ -15,5 +15,10 @@ namespace SignalRServer
             InitializeComponent();
             chatlist.ItemsSource = App.ViewModel.ChatList;
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

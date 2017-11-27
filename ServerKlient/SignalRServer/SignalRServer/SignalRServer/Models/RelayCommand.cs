@@ -4,7 +4,7 @@ using Windows.UI.Xaml;
 
 namespace SignalRServer.Models
 {
-    public class RelayCommand
+    public class RelayCommand : ICommand
     {
         #region Properties
 
