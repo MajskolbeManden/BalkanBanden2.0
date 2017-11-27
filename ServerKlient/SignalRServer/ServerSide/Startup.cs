@@ -3,9 +3,9 @@ using System.Threading.Tasks;
 using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartup(typeof(server.Startup))]
+[assembly: OwinStartup(typeof(ServerSide.Startup))]
 
-namespace server
+namespace ServerSide
 {
     public class Startup
     {

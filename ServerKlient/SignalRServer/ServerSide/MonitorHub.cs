@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using Microsoft.AspNet.SignalR;
-using Microsoft.AspNet.SignalR.Hubs;
 
-namespace server
+namespace ServerSide
 {
-    [HubName("monitor")]
     public class MonitorHub : Hub
     {
         public void Hello()

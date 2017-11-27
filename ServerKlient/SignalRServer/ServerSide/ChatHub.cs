@@ -1,8 +1,12 @@
-﻿using Microsoft.AspNet.SignalR;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using Microsoft.AspNet.SignalR;
 using Microsoft.AspNet.SignalR.Hubs;
 using System.Threading.Tasks;
 
-namespace server
+namespace ServerSide
 {
     [HubName("chat")]
     public class ChatHub : Hub
