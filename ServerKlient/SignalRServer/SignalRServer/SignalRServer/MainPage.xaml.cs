@@ -11,7 +11,9 @@ namespace SignalRServer
     {
         public MainPage()
         {
+            
             InitializeComponent();
+            chatlist.ItemsSource = App.ViewModel.ChatList;
         }
     }
 }
