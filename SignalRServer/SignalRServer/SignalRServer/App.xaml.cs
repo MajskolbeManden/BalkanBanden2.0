@@ -29,6 +29,11 @@ namespace SignalRServer
         protected override void OnStart()
         {
             // Handle when your app starts
+
+            /*Check for connection with SignalR
+             * if connection failed, display connection error
+             * and grey out boxes (if possible).
+             */
         }
 
         protected override void OnSleep()
@@ -39,6 +44,14 @@ namespace SignalRServer
         protected override void OnResume()
         {
             // Handle when your app resumes
+            /*Check for connection with SignalR
+             * if connection failed, log out,
+             * and display connection error
+             * 
+             * else check for new messages.
+             * if there are new messages,
+             * then show new messages.
+             */
         }
     }
 }
