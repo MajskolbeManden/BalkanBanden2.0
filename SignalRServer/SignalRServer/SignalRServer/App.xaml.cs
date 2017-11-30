@@ -22,11 +22,11 @@ namespace SignalRServer
         public App()
         {
             InitializeComponent();
-
-            MainPage = 
+            MainPage = new NavigationPage(new LogIndPage());
+           
             
 
-  //          MainPage = new MainPage { BindingContext = new MainViewModel() };
+          //  MainPage = new MainPage { BindingContext = new MainViewModel() };
         }
 
         protected override void OnStart()
