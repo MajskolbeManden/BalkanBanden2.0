@@ -16,6 +16,12 @@ namespace Server
             var msg = string.Format("{0}: {1}", Context.ConnectionId, message);
             Clients.All.newMessage(msg);
         }
+        
+        public void SendExtendedMessage(string name, string message)
+        {
+            var msg = string.Format("{0}: {1}", name, message);
+            Clients.All.newMessage(msg);
+        }
 
         public void SendMessageData(SendData data)
         {
