@@ -34,7 +34,11 @@ namespace SignalRServer.Services
 
         public async Task Send(ChatMessage message)
         {
+<<<<<<< HEAD
             await proxy.Invoke("SendExtendedMessage", message.ID, message.LineTwo);
+=======
+            await proxy.Invoke("SendMessage", message.LineOne);
+>>>>>>> cadda579432d38df9bd8ef86c00ee235963bb1ac
         }
     }
 }

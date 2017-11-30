@@ -62,7 +62,7 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { LineTwo = Cm.LineTwo });
+            await chatservice.Send(new ChatMessage { LineOne = Cm.LineOne });
         }
         #endregion
     }
