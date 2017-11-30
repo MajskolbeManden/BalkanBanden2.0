@@ -23,7 +23,10 @@ namespace SignalRServer
         {
             InitializeComponent();
 
-            MainPage = new SignalRServer.MainPage { BindingContext = new MainViewModel() };
+            MainPage = 
+            
+
+  //          MainPage = new MainPage { BindingContext = new MainViewModel() };
         }
 
         protected override void OnStart()
