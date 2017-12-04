@@ -26,7 +26,7 @@ namespace SignalRServer
 
                 return;
             }
-            await Navigation.PushAsync(new MainPage(Username.Text) { BindingContext = new MainViewModel() });
+            await Navigation.PushAsync(new MainPage(Username.Text) { BindingContext = MainViewModel.ViewModel });
 
         }
     }

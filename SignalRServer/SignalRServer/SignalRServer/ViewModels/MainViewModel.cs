@@ -28,9 +28,21 @@ namespace SignalRServer.ViewModels
                 OnPropertyChanged(nameof(Cm));
             }
         }
-#endregion
+        #endregion
+        private static MainViewModel ghost = new MainViewModel();
+        public static MainViewModel ViewModel
+        {
+            get
+            {
+                // Delay creation of the view model until necessary
+                if (ghost == null)
+                    ghost = new MainViewModel();
 
-        public MainViewModel()
+                return ghost;
+            }
+        }
+
+        private  MainViewModel()
         {
 
             Cm = new ChatMessage();

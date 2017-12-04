@@ -16,9 +16,9 @@ namespace SignalRServer
             Name = name;
             
             InitializeComponent();
-            chatlist.ItemsSource = App.ViewModel.ChatList;
-            var ChatMessage1 = new ChatMessage();
-            ChatMessage1.ID = Name;
+            chatlist.ItemsSource = App.hest.ChatList;
+            var ChatMessage1 = App.hest.Cm;
+            ChatMessage1.ID = name;
 
         }
 
