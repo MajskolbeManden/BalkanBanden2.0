@@ -55,7 +55,7 @@ namespace SignalRServer.ViewModels
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
             Device.BeginInvokeOnMainThread(() =>
-            ChatList.Add(new ChatMessage { LineOne = e.LineOne }));
+            ChatList.Add(new ChatMessage { LineOne = e.LineOne, ID = e.ID}));
         }
 
         #region Property of datatype PropertyChangedEventHandler
@@ -74,7 +74,7 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { LineOne = Cm.LineOne });
+            await chatservice.Send(new ChatMessage { LineOne = Cm.LineOne, ID = cm.ID });
         }
         #endregion
     }
