@@ -25,9 +25,8 @@ namespace SignalRServer.Models
 
         #region props
 
-
+        /* UserID used as groupID */
         private string id;
-
         public string ID
         {
             get { return id; }
@@ -41,6 +40,7 @@ namespace SignalRServer.Models
             }
         }
 
+        /* Users message sent as a string */
         private string lineOne;
         public string LineOne
         {
@@ -54,16 +54,48 @@ namespace SignalRServer.Models
                 }
             }
         }
-        private string lineTwo;
-        public string LineTwo
+
+        /* Users name sent as a string */
+        private string senderName;
+        public string SenderName
         {
-            get { return lineTwo; }
+            get { return senderName; }
             set
             {
-                if (value != lineTwo)
+                if (value != senderName)
                 {
-                    lineTwo = value;
-                    OnPropertyChanged(nameof(LineTwo));
+                    senderName = value;
+                    OnPropertyChanged(nameof(SenderName));
+                }
+            }
+        }
+
+        /* MessageID given by the database to keep multiple messages in order */
+        private int messageID;
+        public int MessageID
+        {
+            get { return messageID; }
+            set
+            {
+                if (value != messageID)
+                {
+                    messageID = value;
+                    OnPropertyChanged(nameof(MessageID));
+                }
+            }
+        }
+
+        /* Date and time for when the message was sent */
+        private DateTime dateTime;
+        public DateTime DateTime
+        {
+            get { return dateTime; }
+            set
+            {
+                if (value != dateTime)
+                {
+                    dateTime = value;
+                    OnPropertyChanged(nameof(DateTime));
                 }
             }
         }
