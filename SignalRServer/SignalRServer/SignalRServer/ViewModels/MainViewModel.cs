@@ -17,6 +17,22 @@ namespace SignalRServer.ViewModels
         private ChatService chatservice = new ChatService();
         public ObservableCollection<ChatMessage> ChatList { get; set; }
 
+        /// <summary>
+        /// testing purposes
+        /// </summary>
+        public async void LoadChatList()
+        {
+            try
+            {
+                ChatList = await Handlers.CRUD.GetMessages();
+                }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         #region Message Property
         private ChatMessage cm;
         public ChatMessage Cm
@@ -46,7 +62,8 @@ namespace SignalRServer.ViewModels
         {
 
             Cm = new ChatMessage();
-            ChatList = new ObservableCollection<ChatMessage>();            
+            ChatList = new ObservableCollection<ChatMessage>();
+            LoadChatList();
             chatservice.Connect();
             chatservice.OnMessageReceived += chatservice_OnMessageReceived;
             SendMessageCommand = new RelayCommand(ExecuteSendMessageCommand);

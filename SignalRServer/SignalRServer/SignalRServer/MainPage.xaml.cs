@@ -11,14 +11,14 @@ namespace SignalRServer
     public partial class MainPage : ContentPage
     {
         string Name;
-        public MainPage(string name)
+        public MainPage()
         {
-            Name = name;
+            //Name = name;
             
             InitializeComponent();
             chatlist.ItemsSource = App.hest.ChatList;
-            var ChatMessage1 = App.hest.Cm;
-            ChatMessage1.ID = name;
+            //var ChatMessage1 = App.hest.Cm;
+            //ChatMessage1.ID = name;
 
         }
 
