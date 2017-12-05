@@ -55,7 +55,7 @@ namespace SignalRServer.ViewModels
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
             Device.BeginInvokeOnMainThread(() =>
-            ChatList.Add(new ChatMessage { LineOne = e.LineOne, SenderName = e.SenderName}));
+            ChatList.Add(new ChatMessage { LineOne = e.LineOne, SenderName = e.SenderName, DateTime = e.DateTime}));
         }
 
         #region Property of datatype PropertyChangedEventHandler
