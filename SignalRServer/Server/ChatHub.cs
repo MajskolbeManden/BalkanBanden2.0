@@ -17,9 +17,9 @@ namespace Server
             Clients.All.newMessage(msg);
         }
         
-        public void SendExtendedMessage(string name, string message)
+        public void SendExtendedMessage(string name, string message, DateTime time)
         {
-            var msg = string.Format("{0}: {1}", name, message);
+            var msg = string.Format("{0}: {1} \n >{2}", name, time, message);
             Clients.All.newMessage(msg);
         }
 
