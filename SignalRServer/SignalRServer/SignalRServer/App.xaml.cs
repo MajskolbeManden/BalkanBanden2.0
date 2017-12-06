@@ -13,10 +13,10 @@ namespace SignalRServer
             InitializeComponent();
           hest = MainViewModel.ViewModel;
             MainPage = new NavigationPage(new LogIndPage());
-           
-            
 
-          //  MainPage = new MainPage { BindingContext = new MainViewModel() };
+
+
+            //MainPage = new MainPage { BindingContext = hest };
         }
 
         protected override void OnStart()

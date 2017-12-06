@@ -12,13 +12,18 @@ namespace SignalRServer.Handlers
 {
     public class CRUD
     {
+        //connection string til webservice
+        //pt et test site; det bliver migreret når funktionalitet virker
         private const string serverUrl = "http://signalrrestchatap.azurewebsites.net";
 
+        //liste der indeholder beskeder fra databasen
         public static async Task<ObservableCollection<ChatMessage>> GetMessages()
         {
             ObservableCollection<ChatMessage> tempList = new ObservableCollection<ChatMessage>();
-
-            //Using bruges til når man har en forbindelse åben fortsættelse følger.
+            
+            //i denne forbindelse bruges using til at åbne en forbindelse 
+            //når vi skal foretage et kald til webservice
+            //hvor den lukker forbindelsen igen når den er færdig
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -37,7 +42,7 @@ namespace SignalRServer.Handlers
                 }
                 catch (Exception e)
                 {
-
+                    //TODO: definere en exception der vises hvis kald ikke er succesfuldt
                     throw;
                 }
                 return tempList;

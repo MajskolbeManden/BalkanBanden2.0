@@ -19,14 +19,14 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="5" Orientation="Horizontal">
-                                <Label Text="{Binding LineOne}"></Label>
+                                <Label Text="{Binding Message}"></Label>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
         </ScrollView>
-        <Entry Placeholder="skriv besked" Text="{Binding Cm.LineOne}" Grid.Column="0" Grid.Row="1"/>
+        <Entry Placeholder="skriv besked" Text="{Binding Cm.Message}" Grid.Column="0" Grid.Row="1"/>
         <Button Text="send" Command="{Binding SendMessageCommand}" Grid.Column="1" Grid.Row="1"/>
     </Grid>
 </ContentPage>

@@ -26,15 +26,15 @@ namespace SignalRServer.Services
         public async Task Connect()
         {
             await connection.Start();
-            proxy.On("newMessage", (string lineOne) => OnMessageReceived(this, new ChatMessage
+            proxy.On("newMessage", (string message) => OnMessageReceived(this, new ChatMessage
             {
-                LineOne = lineOne
+                Message = message
             }));
         }
 
         public async Task Send(ChatMessage message)
         {
-         await proxy.Invoke("SendExtendedMessage",message.SenderName, message.LineOne, message.DateTime);
+         await proxy.Invoke("SendExtendedMessage",message.SenderName, message.Message, message.Time);
 
         }
     }

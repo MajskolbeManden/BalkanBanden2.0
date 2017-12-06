@@ -20,13 +20,13 @@ namespace SignalRServer
 
         async void Button_Clicked(object sender, EventArgs e)
         {
-            //if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Password.Text))
-            //{
-            //    await DisplayAlert("support", "Please enter username and/or password", "OK");
+            if (string.IsNullOrEmpty(Username.Text) || string.IsNullOrEmpty(Password.Text))
+            {
+                await DisplayAlert("support", "Please enter username and/or password", "OK");
 
-            //    return;
-            //}
-            await Navigation.PushAsync(new MainPage() { BindingContext = MainViewModel.ViewModel });
+                return;
+            }
+            await Navigation.PushAsync(new MainPage(Username.Text) { BindingContext = MainViewModel.ViewModel });
 
         }
     }

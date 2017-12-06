@@ -25,7 +25,7 @@ namespace SignalRServer.ViewModels
             try
             {
                 ChatList = await Handlers.CRUD.GetMessages();
-                }
+            }
             catch (Exception)
             {
 
@@ -72,7 +72,7 @@ namespace SignalRServer.ViewModels
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
             Device.BeginInvokeOnMainThread(() =>
-            ChatList.Add(new ChatMessage { LineOne = e.LineOne, SenderName = e.SenderName, DateTime = e.DateTime}));
+            ChatList.Add(new ChatMessage { Message = e.Message, SenderName = e.SenderName, Time = e.Time}));
         }
 
         #region Property of datatype PropertyChangedEventHandler
@@ -91,7 +91,7 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { LineOne = Cm.LineOne, SenderName = cm.ID, DateTime = DateTime.Now });
+            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = cm.GroupID, Time = DateTime.Now });
         }
         #endregion
     }
