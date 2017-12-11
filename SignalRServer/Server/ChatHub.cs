@@ -23,6 +23,11 @@ namespace Server
             Clients.All.newMessage(msg);
         }
 
+        public void JoinGroup(int room)
+        {
+
+        }
+
         public void SendMessageData(SendData data)
         {
             Clients.All.newData(data);
