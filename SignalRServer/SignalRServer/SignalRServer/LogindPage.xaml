@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
             <Entry  x:Name="Username" Placeholder="username" Text="{Binding Cm.SenderName}" WidthRequest="200"/>
-            <Entry x:Name="Password" Placeholder="password" WidthRequest="200"/>
+            <Entry x:Name="Password" Placeholder="password" Text="{Binding U.password}" WidthRequest="200"/>
             <Button Text="logind" Clicked="Button_Clicked"></Button>
         </StackLayout>
     </ContentPage.Content>

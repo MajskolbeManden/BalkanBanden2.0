@@ -17,10 +17,11 @@ namespace Server
             Clients.All.newMessage(msg);
         }
         
-        public void SendExtendedMessage(string name, string message, DateTime time)
+        public void SendExtendedMessage(string name, string message, DateTime time, string groupName)
         {
             var msg = string.Format("{0}: {1} \n >{2}", name, time, message);
-            Clients.All.newMessage(msg);
+            Clients.Group(groupName).addChatMessage(name, message);
+            //Clients.All.newMessage(msg);
         }
 
         public void SendMessageData(SendData data)
@@ -32,6 +33,12 @@ namespace Server
         {
             SendMonitorData("Connected", Context.ConnectionId);
             return base.OnConnected();
+        }
+
+        public void AddToGroup(string userName, string groupName)
+        {
+            Groups.Add(Context.ConnectionId, groupName);
+            Clients.Group(groupName).addChatMessage(userName + " joined.");
         }
 
         public override Task OnDisconnected(bool stopCalled)
