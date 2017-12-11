@@ -8,6 +8,6 @@ namespace SignalRServer.Services
     {
         Task Connect();
         event EventHandler<ChatMessage> OnMessageReceived;
-        Task Send(ChatMessage message);
+        Task Send(ChatMessage message, string groupName);
     }
 }
