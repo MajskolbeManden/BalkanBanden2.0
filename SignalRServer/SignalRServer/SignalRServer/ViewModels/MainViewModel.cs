@@ -32,18 +32,6 @@ namespace SignalRServer.ViewModels
                 throw;
             }
         }
-        #region User Property
-        private User u;
-        public User U
-        {
-            get { return u; }
-            set
-            {
-                u = value;
-                OnPropertyChanged(nameof(U));
-            }
-        }
-        #endregion
 
         #region Message Property
         private ChatMessage cm;
@@ -77,7 +65,7 @@ namespace SignalRServer.ViewModels
             ChatList = new ObservableCollection<ChatMessage>();
             LoadChatList();
             chatservice.Connect();
-            chatservice.AddToGroup(Cm.Message, U.password);
+            chatservice.AddToGroup(Cm.Message, Cm.GroupID);
             chatservice.OnMessageReceived += chatservice_OnMessageReceived;
             SendMessageCommand = new RelayCommand(ExecuteSendMessageCommand);
         }
@@ -104,7 +92,7 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = cm.GroupID, Time = DateTime.Now }, U.password);
+            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = cm.GroupID, Time = DateTime.Now }, Cm.GroupID);
         }
         #endregion
     }
