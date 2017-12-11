@@ -37,9 +37,9 @@ namespace SignalRServer.Services
             await proxy.Invoke("AddToGroup", userName, groupName);
         }
 
-        public async Task Send(ChatMessage message)
+        public async Task Send(ChatMessage message, string groupName)
         {
-         await proxy.Invoke("SendExtendedMessage",message.SenderName, message.Message, message.Time);
+         await proxy.Invoke("SendExtendedMessage",message.SenderName, message.Message, message.Time, groupName);
 
         }
     }
