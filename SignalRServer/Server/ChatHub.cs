@@ -20,7 +20,7 @@ namespace Server
         public void SendExtendedMessage(string name, string message, DateTime time, string groupName)
         {
             var msg = string.Format("{0}: {1} \n >{2}", name, time, message);
-            Clients.Group(groupName).addChatMessage(name, message);
+            Clients.Group(groupName).newMessage(name, message);
             //Clients.All.newMessage(msg);
         }
 
@@ -43,7 +43,7 @@ namespace Server
         public void AddToGroup(string userName, string groupName)
         {
             Groups.Add(Context.ConnectionId, groupName);
-            Clients.Group(groupName).addChatMessage(userName + " joined.");
+            Clients.Group(groupName).newMessage(userName + " joined.");
         }
 
         public override Task OnDisconnected(bool stopCalled)
