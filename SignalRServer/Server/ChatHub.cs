@@ -20,7 +20,7 @@ namespace Server
         public void SendExtendedMessage(string name, string message, DateTime time, string groupName)
         {
             var msg = string.Format("{0}: {1} \n >{2}", name, time, message);
-            Clients.Group(groupName).newMessage(name, message);
+            Clients.Group(groupName).newMessage(msg);
             //Clients.All.newMessage(msg);
         }
 
