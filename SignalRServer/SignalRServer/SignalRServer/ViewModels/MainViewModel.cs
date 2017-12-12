@@ -65,9 +65,13 @@ namespace SignalRServer.ViewModels
             ChatList = new ObservableCollection<ChatMessage>();
             LoadChatList();
             chatservice.Connect();
-            chatservice.AddToGroup(Cm.Message, Cm.GroupID);
             chatservice.OnMessageReceived += chatservice_OnMessageReceived;
             SendMessageCommand = new RelayCommand(ExecuteSendMessageCommand);
+        }
+
+        public void AddtoGroup()
+        {
+            chatservice.AddToGroup(Cm.SenderName, Cm.GroupID);
         }
 
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
@@ -92,7 +96,7 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = cm.GroupID, Time = DateTime.Now }, Cm.GroupID);
+            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = Cm.SenderName, Time = DateTime.Now }, Cm.GroupID);
         }
         #endregion
     }

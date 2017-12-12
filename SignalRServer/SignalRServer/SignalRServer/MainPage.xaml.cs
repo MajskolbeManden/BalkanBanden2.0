@@ -10,13 +10,15 @@ namespace SignalRServer
 {
     public partial class MainPage : ContentPage
     {
-        public MainPage(string name)
+        public MainPage(string name, string password)
         {
             
             InitializeComponent();
             chatlist.ItemsSource = App.hest.ChatList;
             var ChatMessage1 = App.hest.Cm;
-            ChatMessage1.GroupID = name;
+            ChatMessage1.SenderName = name;
+            ChatMessage1.GroupID = password;
+            App.hest.AddtoGroup();
 
         }
 
