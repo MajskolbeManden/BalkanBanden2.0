@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SignalRServer.Models
 {
-    class Group
+    public class Group
     {
         public int groupID;
         public int adminID;

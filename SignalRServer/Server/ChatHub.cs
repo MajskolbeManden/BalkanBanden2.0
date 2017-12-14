@@ -21,6 +21,7 @@ namespace Server
         {
             var msg = string.Format("{0}: {1} \n >{2}", name, time, message);
             Clients.Group(groupName).newMessage(msg);
+            
             //Clients.All.newMessage(msg);
         }
 

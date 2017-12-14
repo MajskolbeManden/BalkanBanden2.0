@@ -39,6 +39,7 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Handlers\CRUD.cs" />
+    <Compile Include="Handlers\MessageHandler.cs" />
     <Compile Include="LogIndPage.xaml.cs">
       <DependentUpon>LogIndPage.xaml</DependentUpon>
     </Compile>

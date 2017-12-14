@@ -1,4 +1,5 @@
-﻿using SignalRServer.Models;
+﻿using SignalRServer.Handlers;
+using SignalRServer.Models;
 using SignalRServer.Services;
 using System;
 using System.Collections.Generic;
@@ -15,6 +16,7 @@ namespace SignalRServer.ViewModels
     public class MainViewModel
     {
         private ChatService chatservice = new ChatService();
+        MessageHandler Mh = new MessageHandler();
         public ObservableCollection<ChatMessage> ChatList { get; set; }
 
         /// <summary>
@@ -62,6 +64,7 @@ namespace SignalRServer.ViewModels
         private  MainViewModel()
         {
             Cm = new ChatMessage();
+            Mh = new MessageHandler();
             ChatList = new ObservableCollection<ChatMessage>();
             LoadChatList();
             chatservice.Connect();
@@ -71,13 +74,13 @@ namespace SignalRServer.ViewModels
 
         public void AddtoGroup()
         {
-            chatservice.AddToGroup(Cm.SenderName, Cm.GroupID);
+            chatservice.AddToGroup(Cm.Sender, Cm.GroupName);
         }
 
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
             Device.BeginInvokeOnMainThread(() =>
-            ChatList.Add(new ChatMessage { Message = e.Message, SenderName = e.SenderName, Time = e.Time}));
+            ChatList.Add(new ChatMessage { Message = e.Message, Sender = e.Sender, Time = e.Time}));
         }
 
         #region Property of datatype PropertyChangedEventHandler
@@ -96,7 +99,9 @@ namespace SignalRServer.ViewModels
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
         {
-            await chatservice.Send(new ChatMessage { Message= Cm.Message, SenderName = Cm.SenderName, Time = DateTime.Now }, Cm.GroupID);
+            Mh.AddMessage(new ChatMessage { Message = Cm.Message, Sender = Cm.Sender, Time = DateTime.Now, GroupName = Cm.GroupName });
+            await chatservice.Send(new ChatMessage { Message= Cm.Message, Sender = Cm.Sender, Time = DateTime.Now, GroupName = Cm.GroupName }, Cm.GroupName);
+
         }
         #endregion
     }

@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SignalRServer.Models;
 using Microsoft.AspNet.SignalR.Client;
+using SignalRServer.Handlers;
 
 namespace SignalRServer.Services
 {
@@ -39,8 +40,7 @@ namespace SignalRServer.Services
 
         public async Task Send(ChatMessage message, string groupName)
         {
-         await proxy.Invoke("SendExtendedMessage",message.SenderName, message.Message, message.Time, groupName);
-
+            await proxy.Invoke("SendExtendedMessage",message.Sender, message.Message, message.Time, groupName);            
         }
     }
 }

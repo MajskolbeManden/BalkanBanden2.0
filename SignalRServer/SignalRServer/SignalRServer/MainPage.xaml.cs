@@ -16,8 +16,8 @@ namespace SignalRServer
             InitializeComponent();
             chatlist.ItemsSource = App.hest.ChatList;
             var ChatMessage1 = App.hest.Cm;
-            ChatMessage1.SenderName = name;
-            ChatMessage1.GroupID = password;
+            ChatMessage1.Sender = name;
+            ChatMessage1.GroupName = password;
             App.hest.AddtoGroup();
 
         }

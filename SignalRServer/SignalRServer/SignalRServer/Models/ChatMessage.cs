@@ -26,8 +26,21 @@ namespace SignalRServer.Models
         #region props
 
         /* UserID used as groupID */
-        private string groupID;
-        public string GroupID
+        private string groupName;
+        public string GroupName
+        {
+            get { return groupName; }
+            set
+            {
+                if (value != groupName)
+                {
+                    groupName = value;
+                    OnPropertyChanged(nameof(GroupName));
+                }
+            }
+        }
+        private int groupID;
+        public int GroupID
         {
             get { return groupID; }
             set
@@ -56,16 +69,16 @@ namespace SignalRServer.Models
         }
 
         /* Users name sent as a string */
-        private string senderName;
-        public string SenderName
+        private string sender;
+        public string Sender
         {
-            get { return senderName; }
+            get { return sender; }
             set
             {
-                if (value != senderName)
+                if (value != sender)
                 {
-                    senderName = value;
-                    OnPropertyChanged(nameof(SenderName));
+                    sender = value;
+                    OnPropertyChanged(nameof(Sender));
                 }
             }
         }
