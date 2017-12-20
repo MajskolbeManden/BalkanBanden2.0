@@ -76,25 +76,53 @@ namespace SignalRServer.ViewModels
         {
             chatservice.AddToGroup(Cm.Sender, Cm.GroupName);
         }
+        public virtual void NotifyUser(ChatMessage message)
+        {
+            if(message.Sender != null)
+            {
+                INotify notify = DependencyService.Get<INotify>();
+                if (notify != null)
+                {
+                    notify.NotifyUser(message);
+                }
+            }
+            else
+            {
+                if(message != null)
+                {
+                    if (message.Message.Contains(":"))
+                    {
+                        int index = message.Message.IndexOf(":");
+                        message.Sender = message.Message.Remove(index);
+                        INotify notify = DependencyService.Get<INotify>();
+                        if (notify != null)
+                        {
+                            notify.NotifyUser(message);
+                        }
+                    }
+                }
+            }
+        }
 
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
             Device.BeginInvokeOnMainThread(() =>
             ChatList.Add(new ChatMessage { Message = e.Message, Sender = e.Sender, Time = e.Time}));
+            NotifyUser(new ChatMessage {Message = e.Message, Sender = e.Sender, Time = e.Time});
         }
 
-        #region Property of datatype PropertyChangedEventHandler
+#region Property of datatype PropertyChangedEventHandler
         public event PropertyChangedEventHandler PropertyChanged;
-        #endregion
+#endregion
 
-        #region Method to handle updating the view
+#region Method to handle updating the view
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-        #endregion
+#endregion
 
-        #region send text messages
+#region send text messages
 
         public RelayCommand SendMessageCommand { get; set; }
         async void ExecuteSendMessageCommand()
@@ -103,6 +131,6 @@ namespace SignalRServer.ViewModels
             await chatservice.Send(new ChatMessage { Message= Cm.Message, Sender = Cm.Sender, Time = DateTime.Now, GroupName = Cm.GroupName }, Cm.GroupName);
 
         }
-        #endregion
+#endregion
     }
 }
