@@ -1,0 +1,65 @@
+﻿* {
+    margin:0;
+    padding:0;
+
+}
+body {
+
+}
+.container
+{
+   
+    height:100%;
+    width:100%;
+    background-color:dodgerblue;
+}
+#listContainer {
+    position:fixed;
+    top:0px;
+    left:0px;
+    float: left;
+    height:100%;
+    width: 20%;
+    background-color: yellow;
+}
+#messages {
+    list-style-type: none;
+}
+#chatbox {
+    margin-left: 20%;
+    width: 80%;
+    height: 100%;
+    background-color: whitesmoke;
+}
+.hero-unit {
+    position:fixed;
+    float:left;
+    
+    top:0px;
+    height:94%;
+    width:80%;
+    background-color: white;
+}
+.button {
+   float:right;
+   background-color:#2fd8e9; 
+   border: none;
+   color: white;
+   padding: 1.3% 3%;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size:1em;
+} 
+#message{
+    width:85%;
+    height:100%;
+}
+#chatbtn{
+    position:fixed;
+    bottom:0px;
+    clear:both;
+    height:50px;
+    width:80%;
+    background-color:aliceblue;
+}
