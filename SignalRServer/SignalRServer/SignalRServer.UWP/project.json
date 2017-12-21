@@ -1,10 +1,10 @@
 ﻿{
   "dependencies": {
     "Microsoft.AspNet.SignalR.Client": "2.2.2",
-    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.2",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.5",
     "Microsoft.Toolkit.Uwp.Notifications": "2.1.1",
     "Newtonsoft.Json": "11.0.1-beta1",
-    "Xamarin.Forms": "2.5.0.91635"
+    "Xamarin.Forms": "2.5.0.121934"
   },
   "frameworks": {
     "uap10.0.10586": {}

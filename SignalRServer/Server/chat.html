@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <title>chat page</title>
-
-    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="chatpage.css" rel="stylesheet" />
+    <!--<link href="Content/bootstrap.css" rel="stylesheet" />-->
 
     <script src="Scripts/jquery-3.2.1.js" type="text/javascript"></script>
     <script src="Scripts/bootstrap.js"></script>
@@ -32,18 +32,23 @@
         });
     </script>
 </head>
-<body>
-    <div class="hero-unit">
+<body class="container">
+    <aside id="listContainer">
+        <p>fisse</p>
+    </aside>
+    <div id="chatbox">
 
-        <label for="message">Message</label><input type="text" id="message" placeholder="message..." />
-
-        <div>
-            <input type="button" id="send" value="send message" />
-        </div>
-
-        <div class="container">
+        <div class="hero-unit" style="overflow:scroll;">
             <ul id="messages"></ul>
         </div>
+
+        <div id="chatbtn">
+            <input type="text" id="message" placeholder="message..." />
+            <input class="button" type="button" id="send" value="send message" />
+          
+            
+        </div>
+        
     </div>
 </body>
 </html>
