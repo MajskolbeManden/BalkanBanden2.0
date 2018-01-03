@@ -90,14 +90,17 @@ namespace SignalRServer.ViewModels
             {
                 if(message != null)
                 {
-                    if (message.Message.Contains(":"))
+                    if(message.Message != null)
                     {
-                        int index = message.Message.IndexOf(":");
-                        message.Sender = message.Message.Remove(index);
-                        INotify notify = DependencyService.Get<INotify>();
-                        if (notify != null)
+                        if (message.Message.Contains(":"))
                         {
-                            notify.NotifyUser(message);
+                            int index = message.Message.IndexOf(":");
+                            message.Sender = message.Message.Remove(index);
+                            INotify notify = DependencyService.Get<INotify>();
+                            if (notify != null)
+                            {
+                                notify.NotifyUser(message);
+                            }
                         }
                     }
                 }
@@ -106,9 +109,18 @@ namespace SignalRServer.ViewModels
 
         private void chatservice_OnMessageReceived(object sender, ChatMessage e)
         {
+            ChatMessage message = new ChatMessage();
+            if (e.Message.Contains(":"))
+            {
+                int index = e.Message.IndexOf(":");
+                message.Sender = e.Message.Remove(index);
+                message.Time = Convert.ToDateTime(e.Message.Substring(index + 2, 16));
+                index = e.Message.IndexOf("\n");
+                message.Message = e.Message.Substring(index+3);
+            }
             Device.BeginInvokeOnMainThread(() =>
-            ChatList.Add(new ChatMessage { Message = e.Message, Sender = e.Sender, Time = e.Time}));
-            NotifyUser(new ChatMessage {Message = e.Message, Sender = e.Sender, Time = e.Time});
+            ChatList.Add(new ChatMessage { Message = message.Message, Sender = message.Sender, Time = message.Time}));
+            NotifyUser(new ChatMessage {Message = message.Message, Sender = message.Sender, Time = message.Time});
         }
 
 #region Property of datatype PropertyChangedEventHandler
