@@ -10,7 +10,12 @@
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/jquery.signalR-2.2.2.js"></script>
     <script src="signalr/hubs"></script>
+   
+    
+     
+    
     <script type="text/javascript">
+
         var chat;
 
         $(function () {
@@ -24,6 +29,7 @@
             //do validation
             $('#messages').append('<li>' + message + '</li>');
         }
+
         function onSend() {
             chat.server.sendMessage($('#message').val());
         }
@@ -31,10 +37,12 @@
             alert("An error has occured" + err);
         });
     </script>
+ 
 </head>
 <body class="container">
+    <script src="index.php"></script>
     <aside id="listContainer">
-        <p>fisse</p>
+        <ul id="groups"></ul>
     </aside>
     <div id="chatbox">
 
@@ -45,10 +53,10 @@
         <div id="chatbtn">
             <input type="text" id="message" placeholder="message..." />
             <input class="button" type="button" id="send" value="send message" />
-          
-            
+
+
         </div>
-        
+
     </div>
 </body>
 </html>
