@@ -8,6 +8,8 @@ using Server.Helper;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using Server.Models;
+using System.Collections.ObjectModel;
+using SignalRServer.Models;
 
 namespace Server.Controllers
 {
@@ -17,14 +19,13 @@ namespace Server.Controllers
         public async Task<ActionResult> Index()
         {
             var client = ChatHttpClient.GetClient();
-            HttpResponseMessage response = await client.GetAsync("api/SignalRMessage");
-
+                //var model = JsonConvert.DeserializeObject<IEnumerable<MessageModel>>(content);
+            HttpResponseMessage response = await client.GetAsync("api/SignalRMessages");
+            ObservableCollection<MessageModel> temp = new ObservableCollection<MessageModel>();
             if (response.IsSuccessStatusCode)
             {
-                string content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.DeserializeObject<IEnumerable<MessageModel>>(content);
-
-                return View(model);
+                temp = await response.Content.ReadAsAsync<ObservableCollection<MessageModel>>();
+                return View(temp);
             }
             else
                 return Content("Der er sket en fejl...");

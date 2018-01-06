@@ -1,4 +1,4 @@
-﻿@model Server.Models.MessageModel
+﻿@model IEnumerable<Server.Models.MessageModel>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,7 +7,7 @@
 <h2>Beskeder</h2>
 <hr/>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Index" ,"Chat",FormMethod.Get))
 {
     <table class="table">
         <tr>
@@ -21,7 +21,8 @@
                 Time
             </th>
         </tr>
-        @foreach (var item in Model.MessageModel)
+
+        @foreach (var item in Model)
         {
             <tr>
                 <td>
@@ -36,6 +37,7 @@
             </tr>
         }
     </table>
+}
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
 }

@@ -11,7 +11,7 @@ namespace Server.Helper
         public static HttpClient GetClient()
         {
             HttpClient client = new HttpClient();
-            client.BaseAddress = new Uri("");
+            client.BaseAddress = new Uri("http://signalrchatrestservice.azurewebsites.net");
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(
                 new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));

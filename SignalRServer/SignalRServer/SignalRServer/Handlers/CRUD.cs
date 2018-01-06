@@ -28,7 +28,6 @@ namespace SignalRServer.Handlers
             using (var client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                //lidt i tvivl om denne
                 client.DefaultRequestHeaders.Clear();
                 client.BaseAddress = new Uri(serverUrl);
 
