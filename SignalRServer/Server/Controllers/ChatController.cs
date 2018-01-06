@@ -7,6 +7,7 @@ using System.Net.Http;
 using Server.Helper;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
+using Server.Models;
 
 namespace Server.Controllers
 {
@@ -21,7 +22,7 @@ namespace Server.Controllers
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
-                var model = JsonConvert.deserializeObject<IEnumerable<>>(content);
+                var model = JsonConvert.DeserializeObject<IEnumerable<MessageModel>>(content);
 
                 return View(model);
             }

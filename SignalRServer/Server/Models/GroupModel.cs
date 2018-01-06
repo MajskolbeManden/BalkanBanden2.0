@@ -7,6 +7,8 @@ namespace Server.Models
 {
     public class GroupModel
     {
-
+        public int UserID { get; set; }
+        public int AdminID { get; set; }
+        public string GroupName { get; set; }
     }
 }

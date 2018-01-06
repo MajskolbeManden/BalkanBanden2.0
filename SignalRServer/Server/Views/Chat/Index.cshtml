@@ -1,0 +1,41 @@
+﻿@model Server.Models.MessageModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Beskeder</h2>
+<hr/>
+
+@using (Html.BeginForm())
+{
+    <table class="table">
+        <tr>
+            <th>
+                Afsender
+            </th>
+            <th>
+                Besked
+            </th>
+            <th>
+                Time
+            </th>
+        </tr>
+        @foreach (var item in Model.MessageModel)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Time)
+                </td>
+            </tr>
+        }
+    </table>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+}

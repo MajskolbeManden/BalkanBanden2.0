@@ -176,8 +176,8 @@
     </Compile>
     <Compile Include="Helper\ChatHttpClient.cs" />
     <Compile Include="Models\AdminModel.cs" />
-    <Compile Include="Models\ChatModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
+    <Compile Include="Models\MessageModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="MonitorHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -241,10 +241,10 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Chat\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Chat\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
