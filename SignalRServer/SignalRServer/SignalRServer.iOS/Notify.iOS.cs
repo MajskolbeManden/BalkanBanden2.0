@@ -26,7 +26,7 @@ namespace SignalRServer.iOS
 
             var trigger = UNTimeIntervalNotificationTrigger.CreateTrigger(1, false);
 
-            var requestID = "sampleRequest";
+            var requestID = "request";
             var request = UNNotificationRequest.FromIdentifier(requestID, content, trigger);
 
             UNUserNotificationCenter.Current.AddNotificationRequest(request, (err) => {

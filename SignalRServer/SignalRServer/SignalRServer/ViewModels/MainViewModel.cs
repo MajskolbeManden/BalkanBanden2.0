@@ -114,7 +114,10 @@ namespace SignalRServer.ViewModels
             {
                 int index = e.Message.IndexOf(":");
                 message.Sender = e.Message.Remove(index);
-                message.Time = Convert.ToDateTime(e.Message.Substring(index + 2, 16));
+                if (e.Message.Contains("\n"))
+                {
+                    message.Time = Convert.ToDateTime(e.Message.Substring(index + 2, 16));
+                }
                 index = e.Message.IndexOf("\n");
                 message.Message = e.Message.Substring(index+3);
             }
