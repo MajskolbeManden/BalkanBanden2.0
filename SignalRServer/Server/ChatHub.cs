@@ -30,14 +30,9 @@ namespace Server
 
         }
 
-        public void SendMessageData(SendData data)
-        {
-            Clients.All.newData(data);
-        }
 
         public override Task OnConnected()
         {
-            SendMonitorData("Connected", Context.ConnectionId);
             return base.OnConnected();
         }
 
@@ -48,27 +43,13 @@ namespace Server
         }
 
         public override Task OnDisconnected(bool stopCalled)
-        {
-            SendMonitorData("Disconnected", Context.ConnectionId);
+        {         
             return base.OnDisconnected(stopCalled);
         }
 
         public override Task OnReconnected()
-        {
-            SendMonitorData("Reconnected", Context.ConnectionId);
+        {         
             return base.OnReconnected();
         }
-
-        private void SendMonitorData(string eventType, string connection)
-        {
-            var context = GlobalHost.ConnectionManager.GetHubContext<MonitorHub>();
-            context.Clients.All.newEvent(eventType, connection);
-        }
-    }
-
-    public class SendData
-    {
-        public int ID { get; set; }
-        public string Data { get; set; }
     }
 }

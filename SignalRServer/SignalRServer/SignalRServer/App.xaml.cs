@@ -6,17 +6,17 @@ namespace SignalRServer
     public partial class App : Application
     {
 
-      public static MainViewModel hest;
+      public static MainViewModel MainVM;
 
         public App()
         {
             InitializeComponent();
-          hest = MainViewModel.ViewModel;
+          MainVM = MainViewModel.ViewModel;
             MainPage = new NavigationPage(new LogIndPage());
 
 
 
-            //MainPage = new MainPage { BindingContext = hest };
+            //MainPage = new MainPage { BindingContext = MainVM };
         }
 
         protected override void OnStart()

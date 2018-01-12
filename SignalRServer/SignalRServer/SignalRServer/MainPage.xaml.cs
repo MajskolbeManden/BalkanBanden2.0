@@ -14,11 +14,11 @@ namespace SignalRServer
         {
             
             InitializeComponent();
-            chatlist.ItemsSource = App.hest.ChatList;
-            var ChatMessage1 = App.hest.Cm;
+            chatlist.ItemsSource = App.MainVM.ChatList;
+            var ChatMessage1 = App.MainVM.Cm;
             ChatMessage1.Sender = name;
             ChatMessage1.GroupName = password;
-            App.hest.AddtoGroup();
+            App.MainVM.AddtoGroup();
 
         }
 
