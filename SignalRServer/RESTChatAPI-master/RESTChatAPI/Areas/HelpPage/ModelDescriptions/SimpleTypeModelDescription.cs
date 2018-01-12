@@ -1,0 +1,6 @@
+namespace RESTChatAPI.Areas.HelpPage.ModelDescriptions
+{
+    public class SimpleTypeModelDescription : ModelDescription
+    {
+    }
+}
