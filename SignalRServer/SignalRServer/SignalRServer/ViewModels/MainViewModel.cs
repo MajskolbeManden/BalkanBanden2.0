@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -116,7 +117,9 @@ namespace SignalRServer.ViewModels
                 message.Sender = e.Message.Remove(index);
                 if (e.Message.Contains("\n"))
                 {
-                    message.Time = Convert.ToDateTime(e.Message.Substring(index + 2, 16));
+                    IFormatProvider culture = new CultureInfo("da-DK");
+                    string time = e.Message.Substring(index + 2, 19);
+                    message.Time = DateTime.Parse(time,culture, System.Globalization.DateTimeStyles.AdjustToUniversal);
                 }
                 index = e.Message.IndexOf("\n");
                 message.Message = e.Message.Substring(index+3);
