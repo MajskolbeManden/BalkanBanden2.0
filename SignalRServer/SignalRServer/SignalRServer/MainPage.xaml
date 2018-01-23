@@ -19,6 +19,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Padding="5" Orientation="Horizontal">
+                                <Label Text="{Binding Sender}"></Label>
                                 <Label Text="{Binding Message}"></Label>
                             </StackLayout>
                         </ViewCell>
